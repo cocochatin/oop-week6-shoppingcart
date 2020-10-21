@@ -9,11 +9,14 @@ namespace oop_week6_shoppingcart
         {
             Apple golden = new Apple(0.60);
             Orange orange = new Orange(0.15);
+             Item chair = new Item(1);
+            FoodItem animalFood = new FoodItem(3);
 
             Shopping Guy1 = new Shopping();
             Guy1.Add_To_Cart(golden);
             Guy1.Add_To_Cart(orange);
             Guy1.Add_To_Cart(golden);
+            Guy1.Add_To_Cart(animalFood);
 
             Console.WriteLine($"the bills is {Guy1.Bills()} euros");
             Console.ReadKey();
@@ -22,15 +25,37 @@ namespace oop_week6_shoppingcart
 
     abstract class Product
     {
-        public double price{ get; set; } 
+        public double price { get; set; }
+
     }
-    abstract class Fruit : Product
+    class Item : Product
     {
-       
+        public Item(int price)
+        {
+            this.price = price;
+
+        }
+    }
+
+    abstract class Food : Product
+    {
+
+    }
+    class FoodItem : Food
+    {
+        public FoodItem(int price)
+        {
+            this.price = price;
+        }
+
+    }
+    abstract class Fruit : Food
+    {
+
     }
     class Apple : Fruit
     {
-        public Apple (double price)
+        public Apple(double price)
         {
             this.price = price;
         }
@@ -46,19 +71,25 @@ namespace oop_week6_shoppingcart
 
     class Shopping
     {
-        List<Fruit> cart = new List<Fruit>();
-        public void Add_To_Cart (Fruit coconut)
+        List<Product> cart = new List<Product>();
+        public void Add_To_Cart(Product coconut)
         {
             cart.Add(coconut);
         }
         public double Bills()
         {
             double price = 0;
-            foreach (Fruit banana  in cart )
+            foreach (Product banana in cart)
             {
                 price += banana.price;
             }
             return price;
         }
+    }
+
+    class Price
+    {
+        public int price { get; set; }
+
     }
 }
