@@ -20,6 +20,7 @@ namespace oop_week6_shoppingcart
 
             golden.price = 0.70;
             Console.WriteLine($"the bills is {Guy1.Bills()} euros");
+
             Console.ReadKey();
         }
     }
