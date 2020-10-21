@@ -7,25 +7,33 @@ namespace oop_week6_shoppingcart
     {
         static void Main(string[] args)
         {
-            
-            
+            Apple golden = new Apple(0.60);
+            Orange orange = new Orange(0.15);
+
+            Shopping Guy1 = new Shopping();
+            Guy1.Add_To_Cart(golden);
+            Guy1.Add_To_Cart(orange);
+            Guy1.Add_To_Cart(golden);
+
+            Console.WriteLine($"the bills is {Guy1.Bills()} euros");
+            Console.ReadKey();
         }
     }
 
     abstract class Fruit
     {
-        public int price{ get; set; } 
+        public double price{ get; set; } 
     }
     class Apple : Fruit
     {
-        public Apple (int price)
+        public Apple (double price)
         {
             this.price = price;
         }
     }
     class Orange : Fruit
     {
-        public Orange(int price)
+        public Orange(double price)
         {
             this.price = price;
         }
@@ -39,9 +47,9 @@ namespace oop_week6_shoppingcart
         {
             cart.Add(coconut);
         }
-        public int Bills()
+        public double Bills()
         {
-            int price = 0;
+            double price = 0;
             foreach (Fruit banana  in cart )
             {
                 price += banana.price;
