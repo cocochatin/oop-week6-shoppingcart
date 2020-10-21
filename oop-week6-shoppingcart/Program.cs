@@ -20,9 +20,13 @@ namespace oop_week6_shoppingcart
         }
     }
 
-    abstract class Fruit
+    abstract class Product
     {
         public double price{ get; set; } 
+    }
+    abstract class Fruit : Product
+    {
+       
     }
     class Apple : Fruit
     {
